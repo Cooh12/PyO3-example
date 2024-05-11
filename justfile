@@ -1,12 +1,11 @@
-# Show help message
-[private]
+
 @default:
     just --list
 
-# Install package with dependencies
 @install:
     pip install maturin
-    maturin build -m src/pyo3_example/rust/Cargo.toml
+    maturin develop -m src/pyo3_example/rust/Cargo.toml
+    pip install ./src/pyo3_example/rust/
 
-@run-benchmarks:
+@bench:
     python src/pyo3_example/fib/benchmarks.py
